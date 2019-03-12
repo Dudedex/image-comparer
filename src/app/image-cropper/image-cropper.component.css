@@ -1,0 +1,21 @@
+.cropper-container {
+  height: 300px;
+}
+
+.cropp-btn {
+  margin: 1rem;
+  background-color: white;
+}
+
+.cropp-img {
+  width: 20px;
+}
+
+.big-btn {
+  width:100%
+}
+
+.btn-bar {
+  width:225px;
+  margin: 0 auto;
+}

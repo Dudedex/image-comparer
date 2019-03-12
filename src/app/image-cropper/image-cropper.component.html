@@ -1,0 +1,25 @@
+<input class="btn btn-primary" type="file" type="file" style="display: none" (change)="fileChangeEvent($event)" #upload/>
+<button class="btn btn-secondary big-btn" (click)="clickUpload()"><img width="20px" src="assets/pictures/upload.png">
+  Upload {{image.type}} Image
+</button>
+<div class="btn-bar">
+  <button class="cropp-btn" (click)="rotateLeft()"><img width="20px" src="assets/pictures/left.png"></button>
+  <button class="cropp-btn" (click)="rotateRight()"><img width="20px" src="assets/pictures/right.png"></button>
+  <button class="cropp-btn" (click)="flipHorizontal()"><img width="20px" src="assets/pictures/horizontally.png">
+  </button>
+  <button class="cropp-btn" (click)="flipVertical()"><img width="20px" src="assets/pictures/vertically.png"></button>
+</div>
+<div class="cropper-container">
+  <image-cropper
+    [imageChangedEvent]="imageChangedEvent"
+    [aspectRatio]="image.format"
+    format="png"
+    resizeToWidth="800"
+    (imageCropped)="imageCropped($event)"
+    (imageLoaded)="imageLoaded()"
+    (cropperReady)="cropperReady()"
+    (loadImageFailed)="loadImageFailed()"
+    outputType="base64"
+    #cropper
+  ></image-cropper>
+</div>

@@ -1,0 +1,16 @@
+<div class="page">
+  <div>
+    <div class="cropper-container">
+      Format: <input type="number" class="numberInput" [(ngModel)]="formatX" (change)="saveFormat()"> / <input class="numberInput" type="number" [(ngModel)]="formatY" (change)="saveFormat()">
+    </div>
+  </div>
+  <hr>
+  <div class="col-sm-6">
+    <app-image-cropper [image]="leftImage"></app-image-cropper>
+  </div>
+  <div class="col-sm-6">
+    <app-image-cropper [image]="rightImage"></app-image-cropper>
+  </div>
+</div>
+<div class="clearfix"></div>
+

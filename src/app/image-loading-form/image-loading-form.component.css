@@ -1,0 +1,20 @@
+.page {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  margin-bottom: 3rem;
+}
+
+.clearfix {
+  clear: both;
+}
+
+.cropper-container {
+  max-width: 200px;
+  padding: 1rem;
+  margin: 0 auto;
+}
+
+.numberInput {
+  width: 5rem;
+}
