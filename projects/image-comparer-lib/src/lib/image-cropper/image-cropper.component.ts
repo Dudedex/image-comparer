@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {ImageDetails} from '../classes/image-details';
 import {ImageCroppedEvent} from 'ngx-image-cropper';
 
@@ -22,6 +22,9 @@ export class ImageCropperComponent implements OnInit {
   @Input()
   public format: number;
 
+  @Output()
+  public imageChanged = new EventEmitter();
+
   constructor() {
   }
 
@@ -38,7 +41,7 @@ export class ImageCropperComponent implements OnInit {
 
   imageCropped(event: ImageCroppedEvent) {
     this.image.image = event.base64;
-    console.log(event);
+    this.imageChanged.emit();
   }
 
   imageLoaded() {

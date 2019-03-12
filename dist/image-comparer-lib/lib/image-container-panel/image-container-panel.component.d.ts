@@ -4,6 +4,8 @@ export declare class ImageContainerPanelComponent implements OnInit, OnChanges {
     mainFramWidth: any;
     leftContainerWidth: any;
     rightContainerWidth: any;
+    leftContainerHeight: any;
+    handleMargin: any;
     leftImage: ImageDetails;
     rightImage: ImageDetails;
     constructor();
@@ -11,6 +13,4 @@ export declare class ImageContainerPanelComponent implements OnInit, OnChanges {
     ngOnChanges(changes: SimpleChanges): void;
     initWidth(): void;
     onResizeEnd(event: any): void;
-    getMarginTop(): number;
-    leftContainerHeight(): number;
 }

@@ -1,4 +1,4 @@
-import { ElementRef, OnInit } from '@angular/core';
+import { ElementRef, EventEmitter, OnInit } from '@angular/core';
 import { ImageDetails } from '../classes/image-details';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 export declare class ImageCropperComponent implements OnInit {
@@ -8,6 +8,7 @@ export declare class ImageCropperComponent implements OnInit {
     uploadButton: ElementRef;
     image: ImageDetails;
     format: number;
+    imageChanged: EventEmitter<{}>;
     constructor();
     ngOnInit(): void;
     clickUpload(): void;
