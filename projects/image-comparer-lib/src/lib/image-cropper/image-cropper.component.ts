@@ -9,7 +9,7 @@ import {ImageCroppedEvent} from 'ngx-image-cropper';
 })
 export class ImageCropperComponent implements OnInit {
 
-  private imageChangedEvent: any = '';
+  public imageChangedEvent: any = '';
   public showCropper;
 
   @ViewChild('cropper') imageCropper: ImageCropperComponent;

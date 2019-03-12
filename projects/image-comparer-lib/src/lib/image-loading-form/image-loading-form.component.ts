@@ -1,6 +1,5 @@
 import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from '@angular/core';
 import {ImageDetails} from '../classes/image-details';
-import {ImageCroppedEvent, ImageCropperComponent} from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-image-loading-form',

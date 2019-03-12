@@ -17,6 +17,14 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "image-comparer-lib": [
+        "projects/image-comparer-lib/src/lib"
+      ],
+      "image-comparer-lib/*": [
+        "projects/image-comparer-lib/src/lib/*"
+      ]
+    }
   }
 }
