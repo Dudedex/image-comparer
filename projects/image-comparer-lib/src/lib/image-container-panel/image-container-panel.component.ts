@@ -32,8 +32,13 @@ export class ImageContainerPanelComponent implements OnInit, OnChanges {
     this.mainFramWidth = $('#main-frame').width();
     this.leftContainerWidth = this.mainFramWidth / 2 - 2;
     this.rightContainerWidth = this.mainFramWidth;
-    this.leftContainerHeight = ($('#left-picture-id').height()) + 50;
+    let height = ($('#left-picture-id').height()) + 50;
+    if (isNaN(height)) {
+      height = ($('#right-picture-id').height()) + 50;
+    }
+    this.leftContainerHeight = height;
     this.handleMargin = this.leftContainerHeight - 50;
+
     return true;
   }
 

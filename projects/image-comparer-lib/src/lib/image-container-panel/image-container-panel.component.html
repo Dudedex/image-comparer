@@ -2,13 +2,15 @@
   <app-image-loading-form [leftImage]="leftImage" [rightImage]="rightImage"
                           (imageChanged)="initWidth()"></app-image-loading-form>
   <hr>
-  <div class="outer-picture-container" id="outer-conatiner-id" *ngIf="leftImage && leftImage.image && rightImage && rightImage.image && initWidth()">
+  <div class="outer-picture-container" id="outer-conatiner-id">
     <div id="main-frame" class="image-display">
-      <div>
+      <img class="picture" *ngIf="leftImage && leftImage.image" id="left-picture-id" [style.display]="'none'" [style.width.px]="mainFramWidth" [src]="leftImage.image">
+      <img class="picture" *ngIf="rightImage && rightImage.image" id="right-picture-id" [style.display]="'none'" [style.width.px]="mainFramWidth" [src]="rightImage.image">
+      <div *ngIf="leftImage && leftImage.image && rightImage && rightImage.image">
         <div id="picture-container1" [style.width.px]="mainFramWidth / 2 -2" *ngIf="leftImage && leftImage.image" [style.width.px]="leftContainerWidth" [style.height.px]="leftContainerHeight"
              class="picture-container--left" mwlResizable
              [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event)">
-          <img class="picture" id="left-picture-id" [style.width.px]="mainFramWidth" [src]="leftImage.image">
+          <img class="picture" [style.width.px]="mainFramWidth" [src]="leftImage.image">
           <div class="handle" mwlResizeHandle [style.height.%]="100" [resizeEdges]="{ right: true}">
             <div class="knob" [style.margin-top.px]="handleMargin">
               -<br>-<br>-<br>-<br>-<br>-<br>-
