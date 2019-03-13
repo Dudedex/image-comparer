@@ -2,7 +2,7 @@
   <app-image-loading-form [leftImage]="leftImage" [rightImage]="rightImage"
                           (imageChanged)="initWidth()"></app-image-loading-form>
   <hr>
-  <div class="outer-picture-container" id="outer-conatiner-id" *ngIf="leftImage && leftImage.image && rightImage && rightImage.image">
+  <div class="outer-picture-container" id="outer-conatiner-id" *ngIf="leftImage && leftImage.image && rightImage && rightImage.image && initWidth()">
     <div id="main-frame" class="image-display">
       <div>
         <div id="picture-container1" [style.width.px]="mainFramWidth / 2 -2" *ngIf="leftImage && leftImage.image" [style.width.px]="leftContainerWidth" [style.height.px]="leftContainerHeight"
