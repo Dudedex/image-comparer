@@ -3,11 +3,11 @@
   {{'page.imageComparer.upload.image.' + image.type | translate}}
 </button>
 <div class="btn-bar">
-  <button class="cropp-btn" (click)="rotateLeft()"><img width="20px" src="assets/pictures/left.png"></button>
-  <button class="cropp-btn" (click)="rotateRight()"><img width="20px" src="assets/pictures/right.png"></button>
-  <button class="cropp-btn" (click)="flipHorizontal()"><img width="20px" src="assets/pictures/horizontally.png">
+  <button class="btn-primary cropp-btn" (click)="rotateLeft()"><img width="20px" src="assets/pictures/left.png"></button>
+  <button class="btn-primary cropp-btn" (click)="rotateRight()"><img width="20px" src="assets/pictures/right.png"></button>
+  <button class="btn-primary cropp-btn" (click)="flipHorizontal()"><img width="20px" src="assets/pictures/horizontally.png">
   </button>
-  <button class="cropp-btn" (click)="flipVertical()"><img width="20px" src="assets/pictures/vertically.png"></button>
+  <button class="btn-primary cropp-btn" (click)="flipVertical()"><img width="20px" src="assets/pictures/vertically.png"></button>
 </div>
 <div class="cropper-container" *ngIf="imageChangedEvent">
   <image-cropper
