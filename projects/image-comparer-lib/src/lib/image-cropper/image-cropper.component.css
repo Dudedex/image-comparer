@@ -1,5 +1,5 @@
 .cropper-container {
-  height: 300px;
+  max-height: 600px;
 }
 
 .cropp-btn {

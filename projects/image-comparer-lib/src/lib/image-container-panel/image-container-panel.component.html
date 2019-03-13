@@ -4,10 +4,13 @@
   <hr>
   <div class="outer-picture-container" id="outer-conatiner-id">
     <div id="main-frame" class="image-display">
-      <img class="picture" *ngIf="leftImage && leftImage.image" id="left-picture-id" [style.display]="'none'" [style.width.px]="mainFramWidth" [src]="leftImage.image">
-      <img class="picture" *ngIf="rightImage && rightImage.image" id="right-picture-id" [style.display]="'none'" [style.width.px]="mainFramWidth" [src]="rightImage.image">
+      <img class="picture" *ngIf="leftImage && leftImage.image" id="left-picture-id" [style.display]="'none'"
+           [style.width.px]="mainFramWidth" [src]="leftImage.image">
+      <img class="picture" *ngIf="rightImage && rightImage.image" id="right-picture-id" [style.display]="'none'"
+           [style.width.px]="mainFramWidth" [src]="rightImage.image">
       <div *ngIf="leftImage && leftImage.image && rightImage && rightImage.image">
-        <div id="picture-container1" [style.width.px]="mainFramWidth / 2 -2" *ngIf="leftImage && leftImage.image" [style.width.px]="leftContainerWidth" [style.height.px]="leftContainerHeight"
+        <div id="picture-container1" [style.width.px]="mainFramWidth / 2 -2" *ngIf="leftImage && leftImage.image"
+             [style.width.px]="leftContainerWidth" [style.height.px]="leftContainerHeight"
              class="picture-container--left" mwlResizable
              [enableGhostResize]="true" (resizeEnd)="onResizeEnd($event)">
           <img class="picture" [style.width.px]="mainFramWidth" [src]="leftImage.image">
@@ -19,6 +22,11 @@
         </div>
         <div class="picture-container--right" [style.width.px]="mainFramWidth" *ngIf="rightImage && rightImage.image">
           <img class="picture" [style.width.px]="mainFramWidth" [src]="rightImage.image">
+        </div>
+      </div>
+      <div *ngIf="!(leftImage && leftImage.image && rightImage && rightImage.image)">
+        <div class=" notice">
+          {{'page.imageComparer.upload.image.missing' | translate}}
         </div>
       </div>
     </div>

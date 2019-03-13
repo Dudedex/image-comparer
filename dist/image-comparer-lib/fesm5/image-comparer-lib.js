@@ -3,6 +3,7 @@ import { ImageCropperModule } from 'ngx-image-cropper';
 import { ResizableDirective, ResizableModule } from 'angular-resizable-element';
 import { BrowserModule } from '@angular/platform-browser';
 import { Injectable, Component, EventEmitter, Input, Output, ViewChild, NgModule, defineInjectable } from '@angular/core';
+import { TranslateService, TranslateModule } from '@ngx-translate/core';
 
 /**
  * @fileoverview added by tsickle
@@ -26,8 +27,87 @@ var ImageComparerLibService = /** @class */ (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
  */
+var De = /** @class */ (function () {
+    function De() {
+    }
+    /**
+     * @return {?}
+     */
+    De.translation = /**
+     * @return {?}
+     */
+    function () {
+        return {
+            // Translation Keys
+            'page.imageComparer.upload.image.left': 'Linkes Bild öffnen',
+            'page.imageComparer.upload.image.right': 'Rechtes Bild öffnen',
+            'page.imageComparer.upload.image.missing': 'Bitte zwei Bilder öffnen',
+        };
+    };
+    return De;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var En = /** @class */ (function () {
+    function En() {
+    }
+    /**
+     * @return {?}
+     */
+    En.translation = /**
+     * @return {?}
+     */
+    function () {
+        return {
+            // Translation Keys
+            'page.imageComparer.upload.image.left': 'Open left image',
+            'page.imageComparer.upload.image.right': 'Open right image',
+            'page.imageComparer.upload.image.missing': 'Open two images please',
+        };
+    };
+    return En;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
+var TranslationProvider = /** @class */ (function () {
+    function TranslationProvider() {
+    }
+    /**
+     * @param {?} translate
+     * @param {?=} defaultLocale
+     * @return {?}
+     */
+    TranslationProvider.setupTranslationProvider = /**
+     * @param {?} translate
+     * @param {?=} defaultLocale
+     * @return {?}
+     */
+    function (translate, defaultLocale) {
+        translate.setTranslation('de', De.translation(), true);
+        translate.setTranslation('en', En.translation(), true);
+        if (defaultLocale) {
+            translate.setDefaultLang(defaultLocale);
+        }
+        else {
+            translate.setDefaultLang('de');
+        }
+    };
+    return TranslationProvider;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes,extraRequire,missingOverride,missingReturn,unusedPrivateMembers,uselessCode} checked by tsc
+ */
 var ImageComparerLibComponent = /** @class */ (function () {
-    function ImageComparerLibComponent() {
+    function ImageComparerLibComponent(translate) {
+        this.translate = translate;
     }
     /**
      * @return {?}
@@ -36,6 +116,29 @@ var ImageComparerLibComponent = /** @class */ (function () {
      * @return {?}
      */
     function () {
+        this.translationSetup();
+    };
+    /**
+     * @param {?} changes
+     * @return {?}
+     */
+    ImageComparerLibComponent.prototype.ngOnChanges = /**
+     * @param {?} changes
+     * @return {?}
+     */
+    function (changes) {
+        this.translationSetup();
+    };
+    /**
+     * @private
+     * @return {?}
+     */
+    ImageComparerLibComponent.prototype.translationSetup = /**
+     * @private
+     * @return {?}
+     */
+    function () {
+        TranslationProvider.setupTranslationProvider(this.translate, this.locale);
     };
     ImageComparerLibComponent.decorators = [
         { type: Component, args: [{
@@ -44,7 +147,12 @@ var ImageComparerLibComponent = /** @class */ (function () {
                 }] }
     ];
     /** @nocollapse */
-    ImageComparerLibComponent.ctorParameters = function () { return []; };
+    ImageComparerLibComponent.ctorParameters = function () { return [
+        { type: TranslateService }
+    ]; };
+    ImageComparerLibComponent.propDecorators = {
+        locale: [{ type: Input }]
+    };
     return ImageComparerLibComponent;
 }());
 
@@ -171,8 +279,8 @@ var ImageCropperComponent = /** @class */ (function () {
     ImageCropperComponent.decorators = [
         { type: Component, args: [{
                     selector: 'app-image-cropper',
-                    template: "<input class=\"btn btn-primary\" type=\"file\" type=\"file\" style=\"display: none\" (change)=\"fileChangeEvent($event)\" #upload/>\n<button class=\"btn btn-secondary big-btn\" (click)=\"clickUpload()\"><img width=\"20px\" src=\"assets/pictures/upload.png\">\n  Upload {{image.type}} Image\n</button>\n<div class=\"btn-bar\">\n  <button class=\"cropp-btn\" (click)=\"rotateLeft()\"><img width=\"20px\" src=\"assets/pictures/left.png\"></button>\n  <button class=\"cropp-btn\" (click)=\"rotateRight()\"><img width=\"20px\" src=\"assets/pictures/right.png\"></button>\n  <button class=\"cropp-btn\" (click)=\"flipHorizontal()\"><img width=\"20px\" src=\"assets/pictures/horizontally.png\">\n  </button>\n  <button class=\"cropp-btn\" (click)=\"flipVertical()\"><img width=\"20px\" src=\"assets/pictures/vertically.png\"></button>\n</div>\n<div class=\"cropper-container\">\n  <image-cropper\n    [imageChangedEvent]=\"imageChangedEvent\"\n    [aspectRatio]=\"image.format\"\n    format=\"png\"\n    resizeToWidth=\"800\"\n    (imageCropped)=\"imageCropped($event)\"\n    (imageLoaded)=\"imageLoaded()\"\n    (cropperReady)=\"cropperReady()\"\n    (loadImageFailed)=\"loadImageFailed()\"\n    outputType=\"base64\"\n    #cropper\n  ></image-cropper>\n</div>\n",
-                    styles: [".cropper-container{height:300px}.cropp-btn{margin:1rem;background-color:#fff}.cropp-img{width:20px}.big-btn{width:100%}.btn-bar{width:225px;margin:0 auto}"]
+                    template: "<input class=\"btn btn-primary\" type=\"file\" accept=\"image/*\" type=\"file\" style=\"display: none\" (change)=\"fileChangeEvent($event)\" #upload/>\n<button class=\"btn btn-secondary big-btn\" (click)=\"clickUpload()\"><img width=\"20px\" src=\"assets/pictures/upload.png\">\n  {{'page.imageComparer.upload.image.' + image.type | translate}}\n</button>\n<div class=\"btn-bar\">\n  <button class=\"cropp-btn\" (click)=\"rotateLeft()\"><img width=\"20px\" src=\"assets/pictures/left.png\"></button>\n  <button class=\"cropp-btn\" (click)=\"rotateRight()\"><img width=\"20px\" src=\"assets/pictures/right.png\"></button>\n  <button class=\"cropp-btn\" (click)=\"flipHorizontal()\"><img width=\"20px\" src=\"assets/pictures/horizontally.png\">\n  </button>\n  <button class=\"cropp-btn\" (click)=\"flipVertical()\"><img width=\"20px\" src=\"assets/pictures/vertically.png\"></button>\n</div>\n<div class=\"cropper-container\" *ngIf=\"imageChangedEvent\">\n  <image-cropper\n    [imageChangedEvent]=\"imageChangedEvent\"\n    [aspectRatio]=\"image.format\"\n    format=\"png\"\n    resizeToWidth=\"800\"\n    (imageCropped)=\"imageCropped($event)\"\n    (imageLoaded)=\"imageLoaded()\"\n    (cropperReady)=\"cropperReady()\"\n    (loadImageFailed)=\"loadImageFailed()\"\n    outputType=\"base64\"\n    #cropper\n  ></image-cropper>\n</div>\n",
+                    styles: [".cropper-container{max-height:600px}.cropp-btn{margin:1rem;background-color:#fff}.cropp-img{width:20px}.big-btn{width:100%}.btn-bar{width:225px;margin:0 auto}"]
                 }] }
     ];
     /** @nocollapse */
@@ -250,8 +358,8 @@ var ImageContainerPanelComponent = /** @class */ (function () {
     ImageContainerPanelComponent.decorators = [
         { type: Component, args: [{
                     selector: 'app-image-container-panel',
-                    template: "<div class=\"outer-picture-container\" (window:resize)=\"initWidth()\">\n  <app-image-loading-form [leftImage]=\"leftImage\" [rightImage]=\"rightImage\"\n                          (imageChanged)=\"initWidth()\"></app-image-loading-form>\n  <hr>\n  <div class=\"outer-picture-container\" id=\"outer-conatiner-id\">\n    <div id=\"main-frame\" class=\"image-display\">\n      <img class=\"picture\" *ngIf=\"leftImage && leftImage.image\" id=\"left-picture-id\" [style.display]=\"'none'\" [style.width.px]=\"mainFramWidth\" [src]=\"leftImage.image\">\n      <img class=\"picture\" *ngIf=\"rightImage && rightImage.image\" id=\"right-picture-id\" [style.display]=\"'none'\" [style.width.px]=\"mainFramWidth\" [src]=\"rightImage.image\">\n      <div *ngIf=\"leftImage && leftImage.image && rightImage && rightImage.image\">\n        <div id=\"picture-container1\" [style.width.px]=\"mainFramWidth / 2 -2\" *ngIf=\"leftImage && leftImage.image\" [style.width.px]=\"leftContainerWidth\" [style.height.px]=\"leftContainerHeight\"\n             class=\"picture-container--left\" mwlResizable\n             [enableGhostResize]=\"true\" (resizeEnd)=\"onResizeEnd($event)\">\n          <img class=\"picture\" [style.width.px]=\"mainFramWidth\" [src]=\"leftImage.image\">\n          <div class=\"handle\" mwlResizeHandle [style.height.%]=\"100\" [resizeEdges]=\"{ right: true}\">\n            <div class=\"knob\" [style.margin-top.px]=\"handleMargin\">\n              -<br>-<br>-<br>-<br>-<br>-<br>-\n            </div>\n          </div>\n        </div>\n        <div class=\"picture-container--right\" [style.width.px]=\"mainFramWidth\" *ngIf=\"rightImage && rightImage.image\">\n          <img class=\"picture\" [style.width.px]=\"mainFramWidth\" [src]=\"rightImage.image\">\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"clearfix\"></div>\n",
-                    styles: [".outer-picture-container{max-width:800px;margin:0 auto}.image-display{max-width:760px;margin:0 auto;position:relative}.clearfix{clear:both}.picture-container--left{overflow-x:hidden;overflow-y:hidden;float:left;position:absolute;top:0;left:0;z-index:7}.handle{position:absolute;top:0;right:0;height:100px;border-right:1px solid #fff;border-left:1px solid #000}.handle .knob{position:absolute;width:12px;height:50px;margin-left:-12px;background-color:#fff;color:#000;line-height:.5;z-index:100;text-align:center;border:1px solid #000;cursor:-webkit-grab;cursor:grab}.picture-container--right{overflow-x:hidden;float:left;z-index:5}"]
+                    template: "<div class=\"outer-picture-container\" (window:resize)=\"initWidth()\">\n  <app-image-loading-form [leftImage]=\"leftImage\" [rightImage]=\"rightImage\"\n                          (imageChanged)=\"initWidth()\"></app-image-loading-form>\n  <hr>\n  <div class=\"outer-picture-container\" id=\"outer-conatiner-id\">\n    <div id=\"main-frame\" class=\"image-display\">\n      <img class=\"picture\" *ngIf=\"leftImage && leftImage.image\" id=\"left-picture-id\" [style.display]=\"'none'\"\n           [style.width.px]=\"mainFramWidth\" [src]=\"leftImage.image\">\n      <img class=\"picture\" *ngIf=\"rightImage && rightImage.image\" id=\"right-picture-id\" [style.display]=\"'none'\"\n           [style.width.px]=\"mainFramWidth\" [src]=\"rightImage.image\">\n      <div *ngIf=\"leftImage && leftImage.image && rightImage && rightImage.image\">\n        <div id=\"picture-container1\" [style.width.px]=\"mainFramWidth / 2 -2\" *ngIf=\"leftImage && leftImage.image\"\n             [style.width.px]=\"leftContainerWidth\" [style.height.px]=\"leftContainerHeight\"\n             class=\"picture-container--left\" mwlResizable\n             [enableGhostResize]=\"true\" (resizeEnd)=\"onResizeEnd($event)\">\n          <img class=\"picture\" [style.width.px]=\"mainFramWidth\" [src]=\"leftImage.image\">\n          <div class=\"handle\" mwlResizeHandle [style.height.%]=\"100\" [resizeEdges]=\"{ right: true}\">\n            <div class=\"knob\" [style.margin-top.px]=\"handleMargin\">\n              -<br>-<br>-<br>-<br>-<br>-<br>-\n            </div>\n          </div>\n        </div>\n        <div class=\"picture-container--right\" [style.width.px]=\"mainFramWidth\" *ngIf=\"rightImage && rightImage.image\">\n          <img class=\"picture\" [style.width.px]=\"mainFramWidth\" [src]=\"rightImage.image\">\n        </div>\n      </div>\n      <div *ngIf=\"!(leftImage && leftImage.image && rightImage && rightImage.image)\">\n        <div class=\" notice\">\n          {{'page.imageComparer.upload.image.missing' | translate}}\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div class=\"clearfix\"></div>\n",
+                    styles: [".outer-picture-container{max-width:800px;margin:0 auto}.image-display{max-width:760px;margin:0 auto;position:relative}.clearfix{clear:both}.picture-container--left{overflow-x:hidden;overflow-y:hidden;float:left;position:absolute;top:0;left:0;z-index:7}.handle{position:absolute;top:0;right:0;height:100px;border-right:1px solid #fff;border-left:1px solid #000}.handle .knob{position:absolute;width:12px;height:50px;margin-left:-12px;background-color:#fff;color:#000;line-height:.5;z-index:100;text-align:center;border:1px solid #000;cursor:-webkit-grab;cursor:grab}.picture-container--right{overflow-x:hidden;float:left;z-index:5}.notice{max-width:400px;margin:0 auto;padding:2rem;border-radius:4px;text-align:center;color:#004085;background-color:#cce5ff;border-color:#b8daff}"]
                 }] }
     ];
     /** @nocollapse */
@@ -336,7 +444,8 @@ var ImageComparerLibModule = /** @class */ (function () {
                         BrowserModule,
                         ResizableModule,
                         FormsModule,
-                        ImageCropperModule
+                        ImageCropperModule,
+                        TranslateModule.forRoot()
                     ],
                     providers: [
                         ResizableDirective

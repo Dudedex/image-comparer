@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {TranslationProvider} from './translation/translation-provider';
 
 @Component({
   selector: 'lib-image-comparer-lib',
@@ -7,11 +9,23 @@ import { Component, OnInit } from '@angular/core';
   `,
   styles: []
 })
-export class ImageComparerLibComponent implements OnInit {
+export class ImageComparerLibComponent implements OnInit, OnChanges {
 
-  constructor() { }
+  @Input()
+  public locale: string;
+
+  constructor(private translate: TranslateService) { }
 
   ngOnInit() {
+    this.translationSetup();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.translationSetup();
+  }
+
+  private translationSetup() {
+    TranslationProvider.setupTranslationProvider(this.translate, this.locale);
   }
 
 }

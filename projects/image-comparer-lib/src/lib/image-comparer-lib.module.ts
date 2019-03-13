@@ -7,6 +7,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ImageCropperComponent} from './image-cropper/image-cropper.component';
 import {ImageContainerPanelComponent} from './image-container-panel/image-container-panel.component';
 import {ImageLoadingFormComponent} from './image-loading-form/image-loading-form.component';
+import {TranslateModule} from '@ngx-translate/core';
 import * as $ from 'jquery';
 
 @NgModule({
@@ -20,7 +21,8 @@ import * as $ from 'jquery';
     BrowserModule,
     ResizableModule,
     FormsModule,
-    ImageCropperModule
+    ImageCropperModule,
+    TranslateModule.forRoot()
   ],
   providers: [
     ResizableDirective
