@@ -229,6 +229,7 @@ var ImageContainerPanelComponent = /** @class */ (function () {
         this.rightContainerWidth = this.mainFramWidth;
         this.leftContainerHeight = ($('#left-picture-id').height()) + 50;
         this.handleMargin = this.leftContainerHeight - 50;
+        return true;
     };
     /**
      * @param {?} event

@@ -11,6 +11,6 @@ export declare class ImageContainerPanelComponent implements OnInit, OnChanges {
     constructor();
     ngOnInit(): void;
     ngOnChanges(changes: SimpleChanges): void;
-    initWidth(): void;
+    initWidth(): boolean;
     onResizeEnd(event: any): void;
 }
