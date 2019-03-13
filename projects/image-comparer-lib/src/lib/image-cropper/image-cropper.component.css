@@ -4,7 +4,8 @@
 
 .cropp-btn {
   margin: 1rem;
-  background-color: white;
+  border-radius: 4px;
+  background-color: #FFFFFF;
 }
 
 .cropp-img {
@@ -12,7 +13,9 @@
 }
 
 .big-btn {
-  width:100%
+  width:100%;
+  background-color: #f1f291;
+  border: 1px solid #e3e3e3;
 }
 
 .btn-bar {
