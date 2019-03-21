@@ -62,3 +62,7 @@
   background-color: #cce5ff;
   border-color: #b8daff;
 }
+
+.picture {
+  float:left;
+}
