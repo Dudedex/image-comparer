@@ -2,7 +2,7 @@
 <button class="btn btn-secondary big-btn" (click)="clickUpload()"><img width="20px" src="assets/pictures/tools/image-comparer/upload.png">
   {{'page.imageComparer.upload.image.' + image.type | translate}}
 </button>
-<div class="btn-bar">
+<div class="btn-bar" *ngIf="imageChangedEvent">
   <button class="btn-primary cropp-btn" (click)="rotateLeft()"><img width="20px" src="assets/pictures/tools/image-comparer/left.jpg"></button>
   <button class="btn-primary cropp-btn" (click)="rotateRight()"><img width="20px" src="assets/pictures/tools/image-comparer/right.jpg"></button>
   <button class="btn-primary cropp-btn" (click)="flipHorizontal()"><img width="20px" src="assets/pictures/tools/image-comparer/horizontally.jpg">
