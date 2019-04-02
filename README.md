@@ -8,7 +8,7 @@ after that you can compare the 2 cropped images at each place at the x axis
   <img src="/demo/image-comparer.png?raw=true"/>
 </p>
 
-**Notice:** The results should reflect the real world result but it is not guaranteed! So use at your own risk ;)
+**Notice:** The pictures don't get uploaded, they are only present in your browser ;)
 
 ## Test it yourself
 
